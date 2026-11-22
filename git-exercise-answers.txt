@@ -1,0 +1,92 @@
+GIT EXERCISE – COMPLETE ANSWERS
+
+PART 1 – CREATE A REPOSITORY
+
+mkdir my-first-repo
+cd my-first-repo
+git init
+touch readme.txt
+
+PART 2 – FIRST COMMIT
+
+git status
+git add readme.txt
+git commit -m "Add readme file"
+git log
+
+PART 3 – MODIFY A FILE
+
+nano readme.txt
+
+After editing and saving the file:
+
+git status
+git add readme.txt
+git commit -m "Update readme file"
+
+There are now two commits.
+
+PART 4 – CREATE AND SWITCH BRANCHES
+
+git branch
+git branch feature-script
+git switch feature-script
+git switch -c dev
+git switch feature-script
+git branch
+
+The asterisk indicates the current branch.
+
+PART 5 – CREATE AN INSTALLATION SCRIPT
+
+touch install.sh
+nano install.sh
+
+Content of install.sh:
+
+#!/bin/bash
+
+echo "Starting installation..."
+
+sudo apt-get update
+
+sudo apt-get install -y curl
+
+echo "Installation complete!"
+
+Save the file, then run:
+
+chmod +x install.sh
+git add install.sh
+git commit -m "Add install script"
+git log --oneline
+
+PART 8 – MERGE BRANCHES
+
+git switch main
+ls
+
+The install.sh file is not visible because it was created on another branch.
+
+Merge the feature branch:
+
+git merge feature-script
+ls
+git log --oneline --graph --all
+git branch -d feature-script
+
+The install.sh file is now part of the main branch.
+
+PART 9 – CONNECT TO GITHUB
+
+Create a new GitHub repository without a README file.
+
+Connect your local repository:
+
+git remote add origin https://github.com/nicolas151551/my-first-repo.git
+
+Replace USERNAME with your GitHub username.
+
+Push your project:
+
+git push -u origin main
