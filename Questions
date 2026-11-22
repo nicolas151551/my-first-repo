@@ -1,0 +1,228 @@
+# Git – Complete Exercise Summary
+
+## Part 1 – Create a Git Repository
+
+**1.1. Create a folder called `my-first-repo`:**
+```bash
+mkdir my-first-repo
+```
+
+**1.2. Navigate into that folder:**
+```bash
+cd my-first-repo
+```
+
+**1.3. Initialize a Git repository:**
+```bash
+git init
+```
+
+**1.4. Create a file called `readme.txt`:**
+```bash
+touch readme.txt
+```
+
+## Part 2 – Basic Git Commands
+
+**2.1. What command shows the current state of your repository?**
+```bash
+git status
+```
+
+**2.2. What command stages `readme.txt` for commit?**
+```bash
+git add readme.txt
+```
+
+**2.3. What command commits with the message "Add readme file"?**
+```bash
+git commit -m "Add readme file"
+```
+
+**2.4. What command shows your commit history?**
+```bash
+git log
+```
+
+## Part 3 – Modify a File
+
+**3.1. Edit `readme.txt` and add a new line of text:**
+```bash
+nano readme.txt
+```
+
+**3.2. What does `git status` show now? Describe in your own words.**
+
+The file `readme.txt` is modified. Git detects changes that have not yet been staged or committed.
+
+**3.3. Stage and commit your changes with an appropriate message:**
+```bash
+git add readme.txt
+git commit -m "Update readme file"
+```
+
+**3.4. How many commits do you have now?**
+
+I have 2 commits: the first one created the README file, and the second one updated it.
+
+## Part 4 – Branches
+
+**4.1. What command lists all branches in your repository?**
+```bash
+git branch
+```
+
+**4.2. What command creates a new branch called `feature-script`?**
+```bash
+git branch feature-script
+```
+
+**4.3. What command switches to the `feature-script` branch?**
+```bash
+git switch feature-script
+```
+
+**4.4. What single command creates and switches to a new branch called `dev`?**
+```bash
+git switch -c dev
+```
+
+**4.5. Switch back to the `feature-script` branch:**
+```bash
+git switch feature-script
+```
+
+**4.6. Verify you are on the correct branch:**
+```bash
+git branch
+```
+
+The asterisk (*) indicates the current branch.
+
+## Part 5 – Create an Installation Script
+
+**5.1. Make sure you are on the `feature-script` branch:**
+```bash
+git switch feature-script
+```
+
+**5.2. Create a new file called `install.sh`:**
+```bash
+touch install.sh
+```
+
+**5.3. Add the following content to your script:**
+
+```bash
+#!/bin/bash
+
+echo "Starting installation..."
+
+sudo apt-get update
+
+sudo apt-get install -y curl
+
+echo "Installation complete!"
+```
+
+**5.4. Make the script executable:**
+```bash
+chmod +x install.sh
+```
+
+**5.5. Stage and commit your script with the message "Add install script":**
+```bash
+git add install.sh
+git commit -m "Add install script"
+```
+
+**5.6. Check your commit history on this branch:**
+```bash
+git log --oneline
+```
+
+## Part 8 – Merge Branches
+
+**8.1. Switch back to the `main` branch:**
+```bash
+git switch main
+```
+
+**8.2. List the files in your directory. Is `install.sh` present? Why or why not?**
+
+No, `install.sh` is not present because it was created on the `feature-script` branch. The `main` branch has not received those changes yet.
+
+Command:
+```bash
+ls
+```
+
+**8.3. What command merges `feature-script` into `main`?**
+```bash
+git merge feature-script
+```
+
+**8.4. List the files again. What changed?**
+
+The `install.sh` file is now present because the `feature-script` branch has been merged into `main`.
+
+Command:
+```bash
+ls
+```
+
+**8.5. Check your commit history. What do you observe?**
+
+The commit history shows the changes made on the feature branch and their integration into `main`.
+
+Command:
+```bash
+git log --oneline --graph --all
+```
+
+**8.6. What command deletes the `feature-script` branch after merging?**
+```bash
+git branch -d feature-script
+```
+
+## Part 9 – Push to GitHub
+
+**9.1. Create a new GitHub repository called `my-first-repo`, without initializing it with a README file.**
+
+**9.2. What command links your local repository to GitHub?**
+```bash
+git remote add origin https://github.com/USERNAME/my-first-repo.git
+```
+
+**9.3. What command pushes your commits to GitHub?**
+```bash
+git push -u origin main
+```
+
+**9.4. Refresh your GitHub page. What do you see?**
+
+I can see my project files, including `readme.txt` and `install.sh`. My local Git repository has been successfully uploaded to GitHub.
+
+## Part 10 – Delete and Clone
+
+**10.1. Navigate out of your project folder:**
+```bash
+cd ..
+```
+
+**10.2. What command deletes the local repository folder?**
+```bash
+rm -rf my-first-repo
+```
+
+**10.3. What command clones your repository from GitHub?**
+```bash
+git clone https://github.com/USERNAME/my-first-repo.git
+```
+
+**10.4. Navigate into the cloned folder and verify your files are there:**
+```bash
+cd my-first-repo
+ls
+git status
+```
